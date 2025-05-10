@@ -1,0 +1,13 @@
+.catalog-text {
+  font-family: "Playfair Display", serif;
+
+}
+
+.tab-catalog {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+.catalog-card {
+  width: clamp(9.188rem, -1.313rem + 50vw, 13.75rem)
+}

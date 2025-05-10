@@ -1,0 +1,19 @@
+.red_circle {
+  pointer-events: none;
+  position: absolute;
+  width: 293px;
+  height: 293px;
+  border-radius: 293px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255, 0, 225, 0.20) 0%, rgba(48, 7, 7, 0.20) 100%);
+  filter: blur(24.799999237060547px);
+}
+
+.purple_circle {
+  pointer-events: none;
+  position: absolute;
+  width: 293px;
+  height: 293px;
+  border-radius: 293px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(98, 0, 255, 0.20) 0%, rgba(41, 7, 48, 0.20) 100%);
+  filter: blur(24.799999237060547px);
+}
