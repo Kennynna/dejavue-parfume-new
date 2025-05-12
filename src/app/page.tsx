@@ -1,3 +1,5 @@
+import { FlowerLeft, FlowerRight } from '@/components/ui/svg/flower'
+import { WhiteShadowEffect } from '@/components/ui/white-cirlce-effect'
 import { SocialLinks } from '@/components/widgets/social-links'
 import { Montserrat_Alternates } from 'next/font/google'
 
@@ -8,16 +10,17 @@ const montserrat = Montserrat_Alternates({
 
 export default function Home() {
 	return (
-		<div className='hero-section items-center justify-items-center min-h-screen p-4  gap-16'>
-			<h1 className='hero-title mt-[150px]'>DEJAVUE PARFUME</h1>
-			<h1 className='hero-since mt-[20px]'>SICE | 2014</h1>
+		<div className='hero-section items-center justify-items-center min-h-screen p-4 gap-16 relative'>
+			{/* Убрали z-20, чтобы не ограничивать дочерние элементы */}
+			<h1 className='hero-title mt-[150px] z-10 relative'>DEJAVUE PARFUME</h1>
+			<h1 className='hero-since mt-[20px] z-10 relative'>SICE | 2014</h1>
 			<p
-				className={`${montserrat.className} mt-[20px] text-center text-transparent bg-clip-text bg-gradient-to-b from-[#131313] to-[#FDB147]`}
+				className={`${montserrat.className} mt-[20px] text-center text-transparent bg-clip-text bg-gradient-to-b from-[#131313] to-[#FDB147] z-10 relative`}
 			>
 				оригинальные ароматы от ведущих брендов
 			</p>
 
-			<div className='hero-button mt-[20px]'>
+			<div className='hero-button mt-[60px] z-10 relative cursor-pointer'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					width='126'
@@ -28,7 +31,7 @@ export default function Home() {
 				>
 					<foreignObject x='-4' y='-4' width='134' height='46'>
 						<p
-							className={`${montserrat.className} flex items-center justify-center h-full text-black text-[14px] text-center uppercase font-[700] text-black`}
+							className={`${montserrat.className} flex items-center justify-center h-full text-black text-[14px] text-center uppercase font-[700] `}
 						>
 							каталог
 						</p>
@@ -58,8 +61,10 @@ export default function Home() {
 					</defs>
 				</svg>
 			</div>
-
 			<SocialLinks />
+			<FlowerLeft />
+			<FlowerRight />
+			<WhiteShadowEffect className='z-3' />
 		</div>
 	)
 }

@@ -129,6 +129,7 @@
 }
 
 .hero-title {
+  text-shadow: 7px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
   font-family: NanumMyeongjo;
   font-size: 40px;
@@ -165,6 +166,7 @@
   letter-spacing: 3.2px;
   line-height: normal;
   font-style: normal;
+
 }
 
 .hero-button {
@@ -174,4 +176,36 @@
   stroke: #131313;
 
   backdrop-filter: blur(2px);
+}
+
+.white-circle-shadow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  width: 343px;
+  height: 336px;
+  border-radius: 343px;
+  background: radial-gradient(50% 50% at 50% 50%, #FFF 99.99%, #FFC2C2 100%);
+  filter: blur(24.799999237060547px);
+  opacity: 70% ;
+  /* animation: Circle 10s linear infinite; */
+}
+
+@keyframes Circle {
+  0% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateX(100px);
+    transform: translateY(100px);
+  }
+
+
+  100% {
+    transform: translateX(0);
+    transform: translateY(0);
+  }
 }
