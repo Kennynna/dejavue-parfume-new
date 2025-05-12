@@ -1,6 +1,7 @@
 'use client'
 import { useProducts } from '@/lib/hooks/useProducts'
 import { CatalogCard } from '../ui/catalog-card'
+import { Item } from '@/dto/item'
 
 interface CatalogCardsProps {
 	categoryValue: string
@@ -15,7 +16,6 @@ const Fakecontent = [
 	{ id: 7, name: 'Item 3', category: 'man' },
 ]
 
-
 export const CatalogCards = ({ categoryValue }: CatalogCardsProps) => {
 	const { data: products, isLoading, error } = useProducts()
 	console.log(products)
@@ -26,7 +26,7 @@ export const CatalogCards = ({ categoryValue }: CatalogCardsProps) => {
 
 	return (
 		<div className='w-full flex flex-wrap gap-1 justify-between'>
-			{products && products.map(item => <CatalogCard key={item.id} />)}
+			{products && products.map((item: Item) => <CatalogCard key={item.id} />)}
 		</div>
 	)
 }
