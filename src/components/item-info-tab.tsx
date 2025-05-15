@@ -12,7 +12,7 @@ export const ItemInfoTab = () => {
 				</TabsTrigger>
 			</TabsList>
 			{/* Content */}
-			<TabsContent value='characteristics'>
+			<TabsContent value='characteristics' className='mt-5 text-[12px] uppercase '>
 				<table className='w-full border-collapse'>
 					<tbody>
 						<tr className='border-b border-dashed border-gray-300'>
