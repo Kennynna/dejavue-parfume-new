@@ -23,7 +23,7 @@ export const FlowerLeft = () => {
 						y2='149.711'
 						gradientUnits='userSpaceOnUse'
 					>
-						<stop stop-color='#131313' />
+						<stop stopColor='#131313' />
 						<stop offset='1' stop-color='#FDB147' />
 					</linearGradient>
 				</defs>
