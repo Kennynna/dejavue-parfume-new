@@ -1,0 +1,32 @@
+
+
+.grid {
+  display: grid;
+  /* Включаем CSS Grid */
+  grid-template-columns: repeat(3, 1fr);
+  /* 2 колонки одинаковой ширины */
+  grid-gap: 10px;
+  /* Отступ между ячейками */
+}
+
+.grid img {
+  width: 100%;
+  max-height: 106px;
+  min-height: 106px;
+  object-fit: contain;
+  /* Изображение занимает всю ширину ячейки */
+  height: auto;
+  /* Сохраняем пропорции */
+  /* Изображение заполняет ячейку, обрезая лишнее */
+  border-radius: 17px;
+}
+
+.main-img img{
+  max-height: 250px;
+  min-height: 250px;
+  border-radius: 17px;
+}
+
+.active {
+  outline: 2px solid #000;
+}

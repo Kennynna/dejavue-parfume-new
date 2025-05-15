@@ -1,0 +1,15 @@
+.title {
+  font-family: "Montserrat Alternates";
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 3.2px;
+}
+
+.item-price {
+  font-family: "Montserrat Alternates";
+  font-size: 16px;
+  font-weight: 400;
+ span{
+  font-family: "Montserrat";
+ }
+}
