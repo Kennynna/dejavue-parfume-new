@@ -1,7 +1,19 @@
+import { GetServerSideProps } from 'next'
 import { ItemInfo } from '@/components/widgets/item-info'
 import { ItemSwiper } from '@/components/widgets/item-swiper'
-
 import { NextPage } from 'next'
+
+export const getServerSideProps: GetServerSideProps = async context => {
+	const { id } = context.params as { id: string } // Extract id from dynamic route
+	// Optional: Fetch data using id
+	return {
+		props: {
+			id, // Pass id to the page component
+			// Add other props if needed
+		},
+	}
+}
+
 
 type ProductPageProps = {
 	params: { id: string }
@@ -10,6 +22,7 @@ type ProductPageProps = {
 
 const ProductPage: NextPage<ProductPageProps> = ({ params }) => {
 	const { id } = params
+	console.log(id)
 	return (
 		<div className='p-4 mx-auto my-0 w-max-[1260px]'>
 			<ItemSwiper />
