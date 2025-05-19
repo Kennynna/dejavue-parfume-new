@@ -1,32 +1,19 @@
-import { GetServerSideProps } from 'next'
-import { ItemInfo } from '@/components/widgets/item-info'
-import { ItemSwiper } from '@/components/widgets/item-swiper'
-import { NextPage } from 'next'
-
-export const getServerSideProps: GetServerSideProps = async context => {
-	const { id } = context.params as { id: string } // Extract id from dynamic route
-	// Optional: Fetch data using id
-	return {
-		props: {
-			id, // Pass id to the page component
-			// Add other props if needed
-		},
-	}
-}
-
+import { ItemInfo } from "@/components/widgets/item-info"
+import { ItemSwiper } from "@/components/widgets/item-swiper"
 
 type ProductPageProps = {
 	params: { id: string }
 	searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-const ProductPage: NextPage<ProductPageProps> = ({ params }) => {
+// Серверный компонент — может быть async, если вы делаете fetch внутри
+export default async function ProductPage({ params }: ProductPageProps) {
 	const { id } = params
-	console.log(id)
+
 	return (
-		<div className='p-4 mx-auto my-0 w-max-[1260px]'>
-			<ItemSwiper />
-			<ItemInfo />
+		<div className='p-4 mx-auto my-0 max-w-[1260px]'>
+			<ItemSwiper /* product={product} */ />
+			<ItemInfo /* product={product} */ />
 			<div className='flex flex-col gap-6 mt-10'>
 				<button className='px-[50px] py-[16px] bg-[#DFD5D5] text-black min-w-[280px] font-bold'>
 					Оформить
@@ -35,5 +22,3 @@ const ProductPage: NextPage<ProductPageProps> = ({ params }) => {
 		</div>
 	)
 }
-
-export default ProductPage
