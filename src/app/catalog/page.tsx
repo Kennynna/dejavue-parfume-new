@@ -24,7 +24,7 @@ const CatalogMainPage = () => {
 			<CategoryTab />
 			<PaginationCatalog />
 			{telegramData && telegramData ? (
-				<h1>{telegramData.id}</h1>
+				<h1>{telegramData.username}</h1>
 			) : (
 				<h1>Пока никого</h1>
 			)}
