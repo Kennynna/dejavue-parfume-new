@@ -2,7 +2,7 @@ import React from 'react'
 
 export const FlowerLeft = () => {
 	return (
-		<div className = 'absolute bottom-[40px] left-0'>
+		<div className='absolute bottom-[40px] left-0'>
 			<svg
 				xmlns='http://www.w3.org/2000/svg'
 				width='153'
@@ -24,7 +24,7 @@ export const FlowerLeft = () => {
 						gradientUnits='userSpaceOnUse'
 					>
 						<stop stopColor='#131313' />
-						<stop offset='1' stop-color='#FDB147' />
+						<stop offset='1' stopColor='#FDB147' />
 					</linearGradient>
 				</defs>
 			</svg>
@@ -55,8 +55,8 @@ export const FlowerRight = () => {
 						y2='149.711'
 						gradientUnits='userSpaceOnUse'
 					>
-						<stop stop-color='#131313' />
-						<stop offset='1' stop-color='#FDB147' />
+						<stop stopColor='#131313' />
+						<stop offset='1' stopColor='#FDB147' />
 					</linearGradient>
 				</defs>
 			</svg>
