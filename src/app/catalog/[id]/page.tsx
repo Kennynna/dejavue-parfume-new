@@ -11,7 +11,7 @@ export default async function ProductPage(props: ProductPageProps) {
 	const { id } = await props.params
 	// if you need searchParams:
 	// const sp = await props.searchParams
-
+	
 	return (
 		<div className='p-4 mx-auto my-0 max-w-[1260px]'>
 			<ItemSwiper /* product={...} */ />
