@@ -8,9 +8,9 @@ import { useTelegramUser } from '@/hooks/useTelegramUser'
 const CatalogMainPage = () => {
 	const telegramUser = useTelegramUser()
 	return (
-		<div className='p-4 relative bg-[#f2f2f2] grid grid-raw-[auto_1fr_auto] h-full'>
-			<TitleV1 />
-			<CategoryTab />
+		<div className='p-4 relative bg-[#f2f2f2] grid grid-rows-[auto_1fr_auto]  max-w-[1280px] mx-auto my-0 min-h-screen'>
+			<TitleV1 className='max-h-[50px]' />
+			<CategoryTab className='flex flex-col justify-between h-full' />
 			<PaginationCatalog />
 		</div>
 	)

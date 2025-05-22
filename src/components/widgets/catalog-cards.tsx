@@ -169,7 +169,7 @@ export const CatalogCards = ({ categoryValue }: CatalogCardsProps) => {
 	// 		: content.filter(item => item.category === categoryValue)
 
 	return (
-		<div className='w-full flex flex-wrap gap-1 justify-between'>
+		<div className='w-full flex flex-wrap gap-1 gap-y-4 items-center justify-between  h-full'>
 			{Fakecontent && Fakecontent.map((item: Item) => <CatalogCard key={item.id} />)}
 		</div>
 	)

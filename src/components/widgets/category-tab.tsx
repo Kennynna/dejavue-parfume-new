@@ -8,7 +8,7 @@ export const CategoryTab = ({ className }: { className?: string }) => {
 	const [tabValue, setTabValue] = useState('every')
 
 	return (
-		<Tabs value={tabValue} onValueChange={setTabValue} className={cn('w-full mt-5', className)}>
+		<Tabs value={tabValue} onValueChange={setTabValue} className={cn('w-full mt-5 ', className)}>
 			<TabsList className='bg-white'>
 				<TabsTrigger className='tab-catalog' value='every'>
 					Все
@@ -24,7 +24,7 @@ export const CategoryTab = ({ className }: { className?: string }) => {
 
 
       {/* Content */}
-			<TabsContent value={tabValue} className='mt-5'>
+			<TabsContent value={tabValue} className='mt-5 content-center'>
 				<CatalogCards categoryValue={tabValue} />
 			</TabsContent>
 		</Tabs>
