@@ -2,12 +2,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import React, { useState } from 'react'
 import { CatalogCards } from './catalog-cards'
+import { cn } from '@/lib/utils'
 
-export const CategoryTab = () => {
+export const CategoryTab = ({ className }: { className?: string }) => {
 	const [tabValue, setTabValue] = useState('every')
 
 	return (
-		<Tabs value={tabValue} onValueChange={setTabValue} className='w-full mt-5'>
+		<Tabs value={tabValue} onValueChange={setTabValue} className={cn('w-full mt-5', className)}>
 			<TabsList className='bg-white'>
 				<TabsTrigger className='tab-catalog' value='every'>
 					Все

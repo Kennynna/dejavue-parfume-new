@@ -4,31 +4,14 @@ import './catalog.css'
 import { CategoryTab } from '@/components/widgets/category-tab'
 import { TitleV1 } from '@/components/ui/title'
 import { PaginationCatalog } from '@/components/widgets/pagination'
-import { useEffect, useState } from 'react'
+import { useTelegramUser } from '@/hooks/useTelegramUser'
 const CatalogMainPage = () => {
-	const [telegramData, setTelegramData] = useState<TelegramWebAppUser | null>(
-		null
-	)
-	useEffect(() => {
-		if (
-			typeof window !== 'undefined' &&
-			window.Telegram?.WebApp?.initDataUnsafe?.user
-		) {
-			window.Telegram.WebApp.ready()
-			setTelegramData(window.Telegram.WebApp.initDataUnsafe.user)
-		}
-	}, [])
+	const telegramUser = useTelegramUser()
 	return (
-		<div className='p-4 relative bg-[#f2f2f2]'>
+		<div className='p-4 relative bg-[#f2f2f2] grid grid-raw-[auto_1fr_auto] h-full'>
 			<TitleV1 />
 			<CategoryTab />
 			<PaginationCatalog />
-			{telegramData && telegramData ? (
-				<h1>{telegramData.username}</h1>
-			) : (
-				<h1>Пока никого</h1>
-			)}
-			<p>kakak</p>
 		</div>
 	)
 }

@@ -7,10 +7,11 @@ import {
 	PaginationNext,
 	PaginationPrevious,
 } from '@/components/ui/pagination'
+import { cn } from '@/lib/utils'
 
-export const PaginationCatalog = () => {
+export const PaginationCatalog = ({ className }: { className?: string }) => {
 	return (
-		<div className='w-full flex justify-center mt-4'>
+		<div className={cn('w-full flex justify-center mt-4', className)}>
 			<Pagination>
 				<PaginationContent>
 					<PaginationItem>
