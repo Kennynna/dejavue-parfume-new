@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { NavDrawer } from '../nav-drawer';
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 
