@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 
 export const PaginationCatalog = ({ className }: { className?: string }) => {
 	return (
-		<div className={cn('w-full flex justify-center mt-4', className)}>
+		<div className={cn('w-full flex justify-center mt-7', className)}>
 			<Pagination>
 				<PaginationContent>
 					<PaginationItem>
