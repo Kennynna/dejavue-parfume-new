@@ -17,8 +17,8 @@ import { useTelegramStore } from '@/store/user-store'
 import { useInitTelegram } from '@/hooks'
 
 export function NavDrawer({ children }: { children?: React.ReactNode }) {
-	const { user, chatId } = useTelegramStore()
 	useInitTelegram()
+	const { user, chatId } = useTelegramStore()
 
 	return (
 		<Sheet>
@@ -37,7 +37,7 @@ export function NavDrawer({ children }: { children?: React.ReactNode }) {
 						<p>Гость</p>
 					</SheetTitle>
 					<SheetDescription>
-						
+
 					</SheetDescription>
 				</SheetHeader>
 				<SheetFooter>
