@@ -4,9 +4,7 @@ import './catalog.css'
 import { CategoryTab } from '@/components/widgets/category-tab'
 import { TitleV1 } from '@/components/ui/title'
 import { PaginationCatalog } from '@/components/widgets/pagination'
-import { useTelegramUser } from '@/hooks/useInitTelegram'
 const CatalogMainPage = () => {
-	const telegramUser = useTelegramUser()
 	return (
 		<div className='p-4 relative bg-[#f2f2f2] grid grid-rows-[auto_1fr_auto]  max-w-[1280px] mx-auto my-0 min-h-screen'>
 			<TitleV1 className='max-h-[50px] mt-14' />

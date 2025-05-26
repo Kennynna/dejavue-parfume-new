@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 export const useInitTelegram = () => {
 	const setUser = useTelegramStore(state => state.setUser)
-
+	const setChatId = useTelegramStore(state => state.setChatId)
 	useEffect(() => {
 		if (
 			typeof window !== 'undefined' &&
@@ -13,7 +13,7 @@ export const useInitTelegram = () => {
 		) {
 			window.Telegram.WebApp.ready()
 			setUser(window.Telegram.WebApp.initDataUnsafe.user)
-			console.log(window.Telegram.WebApp.initDataUnsafe)
+			setChatId(window.Telegram.WebApp.initDataUnsafe.chat.id)
 		}
 	}, [setUser])
 }

@@ -13,10 +13,14 @@ type TelegramWebAppUser = {
 
 type TelegramStore = {
 	user: TelegramWebAppUser | null
+	chatId: string | null
 	setUser: (user: TelegramWebAppUser) => void
+	setChatId: (chatId: string) => void
 }
 
 export const useTelegramStore = create<TelegramStore>(set => ({
+	chatId: null,
 	user: null,
+	setChatId: chatId => set({ chatId }),
 	setUser: user => set({ user }),
 }))
