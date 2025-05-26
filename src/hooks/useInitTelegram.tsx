@@ -15,5 +15,5 @@ export const useInitTelegram = () => {
 			setUser(window.Telegram.WebApp.initDataUnsafe.user)
 			setChatId(window.Telegram.WebApp.initDataUnsafe.chat.id)
 		}
-	}, [setUser])
+	}, [setUser, setChatId])
 }
