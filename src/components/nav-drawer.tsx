@@ -1,48 +1,53 @@
 'use client'
 
 import { ShoppingBag } from 'lucide-react'
-
 import {
 	Sheet,
-	SheetClose,
+	SheetTrigger,
 	SheetContent,
-	SheetDescription,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
-	SheetTrigger,
+	SheetDescription,
+	SheetFooter,
+	SheetClose,
 } from '@/components/ui/sheet'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import { useTelegramStore } from '@/store/user-store'
-import { useInitTelegram } from '@/hooks'
+import { useInitTelegram } from '@/hooks/useInitTelegram'
 
-export function NavDrawer({ children }: { children?: React.ReactNode }) {
+export function NavDrawer() {
+	// инициализируем Telegram WebApp
 	useInitTelegram()
-	const { user, chatId } = useTelegramStore()
+
+	// читаем из хранилища
+	const user = useTelegramStore(state => state.user)
+	const chatId = useTelegramStore(state => state.chatId)
 
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button variant='outline' size={'lg'}>
-					<ShoppingBag className='h-10 w-4' />
+				<Button variant='outline' size='lg'>
+					<ShoppingBag className='h-6 w-6' />
 				</Button>
 			</SheetTrigger>
 
 			<SheetContent>
 				<SheetHeader>
 					<SheetTitle>
-						{user !== null && <p>{user.username}</p> && chatId && (
-							<p>{chatId}</p>
+						{user ? (
+							<>
+								<p>Пользователь: {user.username}</p>
+								<p>Chat ID: {chatId}</p>
+							</>
+						) : (
+							<p>Гость</p>
 						)}
-						<p>Гость</p>
 					</SheetTitle>
-					<SheetDescription>
-
-					</SheetDescription>
+					<SheetDescription>{/* Здесь ваш текст */}</SheetDescription>
 				</SheetHeader>
 				<SheetFooter>
 					<SheetClose asChild>
-						<Button type='submit'>Save changes</Button>
+						<Button>Save changes</Button>
 					</SheetClose>
 				</SheetFooter>
 			</SheetContent>
