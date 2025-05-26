@@ -14,9 +14,11 @@ import {
 } from '@/components/ui/sheet'
 import { Button } from './ui/button'
 import { useTelegramStore } from '@/store/user-store'
+import { useInitTelegram } from '@/hooks'
 
 export function NavDrawer({ children }: { children?: React.ReactNode }) {
 	const { user, chatId } = useTelegramStore()
+	useInitTelegram()
 
 	return (
 		<Sheet>
@@ -32,9 +34,10 @@ export function NavDrawer({ children }: { children?: React.ReactNode }) {
 						{user !== null && <p>{user.username}</p> && chatId && (
 							<p>{chatId}</p>
 						)}
+						<p>Гость</p>
 					</SheetTitle>
 					<SheetDescription>
-						Make changes to your profile here. Click save when you're done.
+						
 					</SheetDescription>
 				</SheetHeader>
 				<SheetFooter>
