@@ -1,5 +1,5 @@
 import '@/styles/item/item-info.css'
-import { ItemInfoTab } from '../item-info-tab'
+import { ItemInfoTab } from '../shared'
 
 export const ItemInfo = () => {
 	return (

@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Description } from './ui/description'
+import { Description } from '../ui/description'
 export const ItemInfoTab = () => {
 	return (
 		<Tabs defaultValue='characteristics' className='w-full mt-5'>

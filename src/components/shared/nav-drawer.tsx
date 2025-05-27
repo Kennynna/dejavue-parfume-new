@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { useTelegramStore } from '@/store/user-store'
 import { useInitTelegram } from '@/hooks/useInitTelegram'
+import { CartItem, UserAvatar } from '.'
 
 export function NavDrawer() {
 	// инициализируем Telegram WebApp
@@ -32,18 +33,26 @@ export function NavDrawer() {
 			</SheetTrigger>
 
 			<SheetContent>
-				<SheetHeader>
+				<SheetHeader className='p-0'>
 					<SheetTitle>
-						{user ? (
-							<>
-								<p>Пользователь: {user.username}</p>
-								<p>Chat ID: {chatId}</p>
-							</>
-						) : (
-							<p>Гость</p>
-						)}
+						<div className='flex items-center gap-4 h-[72px] border-b border-b-gray-200 px-4'>
+							<UserAvatar />
+							{user ? (
+								<>
+									<p>Пользователь: {user.username}</p>
+								</>
+							) : (
+								<p>Гость</p>
+							)}
+						</div>
 					</SheetTitle>
-					<SheetDescription>{/* Здесь ваш текст */}</SheetDescription>
+					<SheetDescription>
+						<h1 className='text-center text-2xl font-bold'>
+							Корзина
+						</h1>
+
+						<CartItem />
+					</SheetDescription>
 				</SheetHeader>
 				<SheetFooter>
 					<SheetClose asChild>
