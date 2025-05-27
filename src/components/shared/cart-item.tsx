@@ -14,7 +14,7 @@ export const  CartItem = () => {
 	const decreaseQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1))
 
 	return (
-		<div className='max-w-md mx-auto p-4'>
+		<div className='max-w-md mx-auto '>
 			<Card className='overflow-hidden'>
 				<CardContent className='p-3'>
 					<div className='flex gap-3'>

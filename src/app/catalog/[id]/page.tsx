@@ -13,7 +13,7 @@ export default async function ProductPage(props: ProductPageProps) {
 	// const sp = await props.searchParams
 	
 	return (
-		<div className='p-4 mx-auto my-0 max-w-[1260px]'>
+		<div className='p-4 mx-auto my-0 max-w-[1260px] pt-[70px]'>
 			<ItemSwiper /* product={...} */ />
 			<ItemInfo /* product={...} */ />
 			<div className='flex flex-col gap-6 mt-10'>
