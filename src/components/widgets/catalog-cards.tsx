@@ -1,5 +1,5 @@
 'use client'
-import { useProducts } from '@/hooks/useProducts'
+import { useProducts } from '@/hooks/api/useProducts'
 import { CatalogCard } from '../ui/catalog-card'
 import { Item } from '@/dto/item'
 

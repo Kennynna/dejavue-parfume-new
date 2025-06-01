@@ -1,8 +1,8 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { API_URL } from '.'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL 
 export function useProducts() {
 	return useQuery({
 		queryKey: ['products'],

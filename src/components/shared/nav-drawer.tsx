@@ -12,16 +12,15 @@ import {
 } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { useTelegramStore } from '@/store/user-store'
-import { useInitTelegram } from '@/hooks/useInitTelegram'
+import { useInitTelegram } from '@/hooks/api/useInitTelegram'
 import { CartItem, UserAvatar } from '.'
+import { CartDrawerList } from '../cart-drawer-list'
 
 export function NavDrawer() {
-	// инициализируем Telegram WebApp
 	useInitTelegram()
 
 	// читаем из хранилища
 	const user = useTelegramStore(state => state.user)
-	const chatId = useTelegramStore(state => state.chatId)
 
 	return (
 		<Sheet>
@@ -46,21 +45,8 @@ export function NavDrawer() {
 					<h1 className='text-center text-2xl font-bold'>Корзина</h1>
 				</div>
 
-				{/* Прокручиваемая область с товарами */}
-				<div className='flex-1 overflow-y-auto px-4 pb-4'>
-					<div className='space-y-3'>
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
-					</div>
-				</div>
+				{/* КОРЗИНА С ТОВАРАМИ*/}
+				<CartDrawerList userId={1} />
 
 				<SheetFooter className='flex-shrink-0 px-4 pb-4'>
 					<SheetClose asChild>
