@@ -2,15 +2,16 @@
 import { FlowerLeft, FlowerRight } from '@/components/ui/svg/flower'
 import { WhiteShadowEffect } from '@/components/ui/white-cirlce-effect'
 import { SocialLinks } from '@/components/widgets/social-links'
+import { useInitTelegram } from '@/hooks'
 import { Montserrat_Alternates } from 'next/font/google'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 const montserrat = Montserrat_Alternates({
 	subsets: ['latin', 'cyrillic'],
 	weight: ['400', '700'],
 })
 export default function Home() {
+	useInitTelegram()
 
 	return (
 		<div className='hero-section items-center justify-items-center min-h-screen p-4 gap-16 relative'>

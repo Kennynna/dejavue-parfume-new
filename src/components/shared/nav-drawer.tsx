@@ -13,13 +13,10 @@ import {
 import { Button } from '@/components/ui/button'
 import { useTelegramStore } from '@/store/user-store'
 import { useInitTelegram } from '@/hooks/api/useInitTelegram'
-import { CartItem, UserAvatar } from '.'
+import {  UserAvatar } from '.'
 import { CartDrawerList } from '../cart-drawer-list'
 
 export function NavDrawer() {
-	useInitTelegram()
-
-	// читаем из хранилища
 	const user = useTelegramStore(state => state.user)
 
 	return (
