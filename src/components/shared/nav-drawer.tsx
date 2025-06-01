@@ -17,6 +17,8 @@ import {  UserAvatar } from '.'
 import { CartDrawerList } from '../cart-drawer-list'
 
 export function NavDrawer() {
+	useInitTelegram()
+
 	const user = useTelegramStore(state => state.user)
 
 	return (
