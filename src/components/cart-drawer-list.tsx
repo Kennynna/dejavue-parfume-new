@@ -6,7 +6,7 @@ interface CartDrawerListProps {
 	userId: number
 }
 export const CartDrawerList = ({ userId }: CartDrawerListProps) => {
-	const { data, loading } = useCart(userId)
+	const { data } = useCart(userId)
 	console.log(data)
 	return (
 		<div className='flex-1 overflow-y-auto px-4 pb-4'>
