@@ -13,8 +13,7 @@ export function useProducts() {
 			}
 			return response.json()
 		},
-		staleTime: 60000, // Данные устаревают через 1 минуту, уменьшая повторные запросы
+		staleTime: 0,
 		refetchOnWindowFocus: false, // Отключить обновление при фокусе окна
-		retry: 1, // Ограничить попытки повтора до 1 для ненадежных API
 	})
 }

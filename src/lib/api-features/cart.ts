@@ -1,10 +1,10 @@
-import type { CartResponse } from '@/types/cart'
+import type { Cart, CartResponse } from '@/types/cart'
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 export const cartApi = {
-	getCart: async (userId: number): Promise<CartResponse> => {
-		const response = await fetch(`${API_BASE_URL}/cart/${userId}`, {
+	getCart: async (userId: number): Promise<Cart> => {
+		const response = await fetch(`${API_BASE_URL}/telegram/cart/${userId}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
@@ -19,13 +19,16 @@ export const cartApi = {
 	},
 
 	addToCart: async (userId: number, parfumeId: number, quantity = 1) => {
-		const response = await fetch(`${API_BASE_URL}/cart/${userId}/add`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ parfumeId, quantity }),
-		})
+		const response = await fetch(
+			`${API_BASE_URL}/telegram/cart/${userId}/add`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ parfumeId, quantity }),
+			}
+		)
 
 		if (!response.ok) {
 			throw new Error(`Ошибка добавления в корзину: ${response.status}`)
@@ -39,13 +42,16 @@ export const cartApi = {
 		parfumeId: number,
 		quantity: number
 	) => {
-		const response = await fetch(`${API_BASE_URL}/cart/${userId}/update`, {
-			method: 'PUT',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ parfumeId, quantity }),
-		})
+		const response = await fetch(
+			`${API_BASE_URL}/telegram/cart/${userId}/update`,
+			{
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ parfumeId, quantity }),
+			}
+		)
 
 		if (!response.ok) {
 			throw new Error(`Ошибка обновления корзины: ${response.status}`)

@@ -1,5 +1,5 @@
 'use client'
-import { useProducts } from '@/hooks/api/useProducts'
+import { useProducts } from '@/hooks/api-hooks/useProducts'
 import { CatalogCard } from '../ui/catalog-card'
 import { Item } from '@/dto/item'
 
@@ -170,8 +170,9 @@ export const CatalogCards = ({ categoryValue }: CatalogCardsProps) => {
 
 	return (
 		<div className='w-full flex flex-wrap gap-1 gap-y-4 items-center justify-between  h-full'>
-			{Fakecontent &&
-				Fakecontent.map((item: Item) => <CatalogCard key={item.id} />)}
+			{products?.map((item: Item) => (
+				<CatalogCard key={item.id} item={item} />
+			))}
 		</div>
 	)
 }

@@ -16,7 +16,7 @@ export const ItemSwiper = () => {
 				<img src={active} alt='' />
 			</div>
 
-			<div className='grid mt-2'>
+			<div className='img-grid mt-2'>
 				{imgUrls.map((item, index) => (
 					<img
 						key={index}

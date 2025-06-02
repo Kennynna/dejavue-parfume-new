@@ -12,8 +12,8 @@ import {
 } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import { useTelegramStore } from '@/store/user-store'
-import { useInitTelegram } from '@/hooks/api/useInitTelegram'
-import {  UserAvatar } from '.'
+import { useInitTelegram } from '@/hooks/api-hooks/useInitTelegram'
+import { UserAvatar } from '.'
 import { CartDrawerList } from '../cart-drawer-list'
 
 export function NavDrawer() {
@@ -34,7 +34,7 @@ export function NavDrawer() {
 					<SheetTitle>
 						<div className='flex items-center gap-4 h-[72px] border-b border-b-gray-200 px-4'>
 							<UserAvatar />
-							{user ? <p>Пользователь: {user.username}</p> : <p>Гость</p>}
+							{user ? <p>Пользователь: {user.first_name}</p> : <p>Гость</p>}
 						</div>
 					</SheetTitle>
 				</SheetHeader>

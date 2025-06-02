@@ -4,7 +4,8 @@ export type Item = {
 	price: number
 	description: string
 	category: string
-	image: string
+	ml: string
+	imgUrl: string
 	forEvent: string
 	structure: {
 		top: string

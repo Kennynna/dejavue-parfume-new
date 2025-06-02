@@ -1,6 +1,7 @@
 'use client'
 import { Navbar } from '@/components/widgets/nav-bar'
 import Script from 'next/script'
+import './catalog.css'
 
 export default function RootLayout({
 	children,

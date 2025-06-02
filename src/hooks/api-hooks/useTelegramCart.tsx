@@ -1,4 +1,4 @@
-import { cartApi } from '@/lib/api/cart'
+import { cartApi } from '@/lib/api-features/cart'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 
@@ -14,8 +14,8 @@ export const useCart = (userId: number) => {
 		queryKey: cartKeys.byUser(userId),
 		queryFn: () => cartApi.getCart(userId),
 		enabled: !!userId, // Запрос выполняется только если userId существует
-		staleTime: 1000 * 60 * 5, // 5 минут
-		gcTime: 1000 * 60 * 10, // 10 минут (ранее cacheTime)
+		staleTime: 0
+
 	})
 }
 

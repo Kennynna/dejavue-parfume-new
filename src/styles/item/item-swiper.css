@@ -1,6 +1,6 @@
 
 
-.grid {
+.img-grid {
   display: grid;
   /* Включаем CSS Grid */
   grid-template-columns: repeat(3, 1fr);
@@ -9,7 +9,7 @@
   /* Отступ между ячейками */
 }
 
-.grid img {
+.img-grid img {
   width: 100%;
   max-height: 106px;
   min-height: 106px;
