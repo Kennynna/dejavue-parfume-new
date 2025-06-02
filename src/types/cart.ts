@@ -8,7 +8,7 @@ export interface Parfume {
 	ml: string
 }
 
-export interface CartItem {
+export interface CartItemType {
 	id: number
 	cartId: number
 	parfumeId: number
@@ -23,10 +23,7 @@ export interface TelegramUser {
 }
 
 export interface Cart {
-	id: number
-	userId: number
-	items: CartItem[]
-	user: TelegramUser
+	items: CartItemType[]
 }
 
 export interface CartResponse {

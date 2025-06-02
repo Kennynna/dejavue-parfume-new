@@ -1,9 +1,9 @@
-import type { Cart, CartResponse } from '@/types/cart'
+import type { Cart,  CartItemType } from '@/types/cart'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 export const cartApi = {
-	getCart: async (userId: number): Promise<Cart> => {
+	getCart: async (userId: number): Promise<CartItemType[]> => {
 		const response = await fetch(`${API_BASE_URL}/telegram/cart/${userId}`, {
 			method: 'GET',
 			headers: {
@@ -15,7 +15,8 @@ export const cartApi = {
 			throw new Error(`Ошибка получения корзины: ${response.status}`)
 		}
 
-		return response.json()
+		const data: Cart = await response.json()
+		return data.items
 	},
 
 	addToCart: async (userId: number, parfumeId: number, quantity = 1) => {

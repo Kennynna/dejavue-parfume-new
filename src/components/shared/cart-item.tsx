@@ -7,14 +7,13 @@ import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { CartItemType } from '@/types/cart'
 
-export const CartItem = ({
-	name = 'Chanel No. 5',
-	brand = 'Chanel',
-	price = 8990,
-	ml = '50',
-	imageUrl = '/placeholder.svg?height=80&width=80',
-}) => {
+interface CartItemProps {
+	item: CartItemType
+}
+
+export const CartItem = ({ item }: CartItemProps) => {
 	const [quantity, setQuantity] = useState(1)
 
 	const increaseQuantity = () => setQuantity(prev => prev + 1)
@@ -25,33 +24,35 @@ export const CartItem = ({
 		style: 'currency',
 		currency: 'RUB',
 		maximumFractionDigits: 0,
-	}).format(price)
+	}).format(item.parfume.price)
 
 	return (
 		<div className='max-w-md mx-auto'>
 			<Card className='overflow-hidden'>
 				<CardContent className='p-3'>
-					<div className='flex gap-3'>
-						<div className='flex-shrink-0'>
-							<Image
-								src={imageUrl || '/placeholder.svg'}
-								alt={`${brand} ${name}`}
-								width={80}
-								height={80}
-								className='w-20 h-20 object-cover rounded-md'
+					<div className='flex gap-3 items-center'>
+						<div className='flex-1'>
+							<img
+								src='https://avatars.mds.yandex.net/i?id=05077726d32931211dd5fd900bf94149_l-5139440-images-thumbs&n=13'
+								alt={`${item.parfume.brand} ${item.parfume.name}`}
+								width={100}
+								height={100}
+								className='w-full h-full object-cover rounded-md'
 							/>
 						</div>
 
 						<div className='flex-1 min-w-0'>
 							<div className='flex flex-col'>
 								<h3 className='font-medium text-sm mb-0.5 line-clamp-1'>
-									{name}
+									{item.parfume.name}
 								</h3>
-								<p className='text-xs text-muted-foreground mb-1'>{brand}</p>
+								<p className='text-xs text-muted-foreground mb-1'>
+									{item.parfume.brand}
+								</p>
 
 								<div className='flex items-center gap-2 mb-1.5'>
 									<Badge variant='outline' className='text-xs px-2 py-0'>
-										{ml} мл
+										{item.parfume.ml} мл
 									</Badge>
 								</div>
 							</div>
