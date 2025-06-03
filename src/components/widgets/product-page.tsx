@@ -2,26 +2,26 @@
 import { ItemSwiper } from './item-swiper'
 import { ItemInfo } from './item-info'
 import { CartButtonVariants } from '../ui/cart-button'
-import { useState } from 'react'
+import { Parfume } from '@/types/cart'
+import { useAddItemToCart } from '@/hooks/api-hooks/useTelegramCart'
+import { useAppLoading } from '@/hooks/useApiLoading'
 
-export const ProductPageClient = () => {
-	const [isLoading3, setIsLoading3] = useState(false)
+export const ProductPageClient = ({ product }: { product: Parfume }) => {
+	const { mutate } = useAddItemToCart()
+	const isLoading = useAppLoading()
 
-	const handleAddToCart = async (setLoading: (loading: boolean) => void) => {
-		setLoading(true)
-		// Имитация API запроса
-		await new Promise(resolve => setTimeout(resolve, 2000))
-		setLoading(false)
+	const handleAddToCart = () => {
+		mutate({ userId: 2, parfumeId: product.id, quantity: 1 })
 	}
 	return (
 		<>
 			<ItemSwiper /* product={...} */ />
-			<ItemInfo /* product={...} */ />
+			<ItemInfo price={product.price} ml={product.ml} name={product.name} />
 			<div className='flex flex-col gap-6 mt-10'>
 				<div className='space-y-4'>
 					<CartButtonVariants
-						isLoading={isLoading3}
-						onClick={() => handleAddToCart(setIsLoading3)}
+						isLoading={isLoading}
+						onClick={handleAddToCart}
 						variant='default'
 					/>
 				</div>

@@ -1,4 +1,4 @@
-import type { Cart,  CartItemType } from '@/types/cart'
+import type { Cart, CartItemType } from '@/types/cart'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -19,7 +19,7 @@ export const cartApi = {
 		return data.items
 	},
 
-	addToCart: async (userId: number, parfumeId: number, quantity = 1) => {
+	addItemToCart: async (userId: number, parfumeId: number, quantity = 1) => {
 		const response = await fetch(
 			`${API_BASE_URL}/telegram/cart/${userId}/add`,
 			{
@@ -35,7 +35,6 @@ export const cartApi = {
 			throw new Error(`Ошибка добавления в корзину: ${response.status}`)
 		}
 
-		return response.json()
 	},
 
 	updateCartItem: async (
@@ -76,4 +75,20 @@ export const cartApi = {
 
 		return response.json()
 	},
+
+	removeItemFromCart: async (userId: number, itemId: number) => {
+		const response = await fetch(
+			`${API_BASE_URL}/telegram/cart/${userId}/item/${itemId}`,
+			{
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}
+		)
+		if (!response.ok) {
+			throw new Error(`Ошибка удаления из корзины: ${response.status}`)
+		}
+	},
+	
 }

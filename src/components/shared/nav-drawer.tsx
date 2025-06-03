@@ -39,13 +39,10 @@ export function NavDrawer() {
 					</SheetTitle>
 				</SheetHeader>
 
-				{/* Заголовок корзины */}
-				<div className='flex-shrink-0 px-4 py-4'>
-					<h1 className='text-center text-2xl font-bold'>Корзина</h1>
-				</div>
+
 
 				{/* КОРЗИНА С ТОВАРАМИ*/}
-				<CartDrawerList userId={1} />
+				<CartDrawerList userId={2} />
 
 				<SheetFooter className='flex-shrink-0 px-4 pb-4'>
 					<SheetClose asChild>

@@ -1,16 +1,22 @@
 import '@/styles/item/item-info.css'
 import { ItemInfoTab } from '../shared'
 
-export const ItemInfo = () => {
+interface ItemInfoProps {
+	ml: string
+	price: number
+	name: string
+}
+
+export const ItemInfo = ({ ml, price, name }: ItemInfoProps) => {
 	return (
 		<div className='mt-4'>
-			<p className='text-center title'>Armaf</p>
+			<p className='text-center title'>{name}</p>
 			<div className='item-price'>
 				<p>
-					Объем <span>50 ml</span> <span>100 ml</span>
+					Объем <span>{ml}</span> <span>100 ml</span>
 				</p>
 				<p>
-					Цена <span>1200 Р</span>
+					Цена <span>{price} Р</span>
 				</p>
 			</div>
 			<ItemInfoTab />

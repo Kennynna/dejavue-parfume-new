@@ -20,7 +20,7 @@ export const useCart = (userId: number) => {
 }
 
 // Хук для добавления товара в корзину
-export const useAddToCart = () => {
+export const useAddItemToCart = () => {
 	const queryClient = useQueryClient()
 
 	return useMutation({
@@ -32,7 +32,7 @@ export const useAddToCart = () => {
 			userId: number
 			parfumeId: number
 			quantity?: number
-		}) => cartApi.addToCart(userId, parfumeId, quantity),
+		}) => cartApi.addItemToCart(userId, parfumeId, quantity),
 		onSuccess: (_, variables) => {
 			// Инвалидируем кэш корзины для обновления данных
 			queryClient.invalidateQueries({
@@ -64,22 +64,22 @@ export const useUpdateCartItem = () => {
 	})
 }
 
-// // Хук для удаления товара из корзины
-// export const useRemoveFromCart = () => {
-// 	const queryClient = useQueryClient()
 
-// 	return useMutation({
-// 		mutationFn: ({
-// 			userId,
-// 			parfumeId,
-// 		}: {
-// 			userId: number
-// 			parfumeId: number
-// 		}) => cartApi.removeFromCart(userId, parfumeId),
-// 		onSuccess: (_, variables) => {
-// 			queryClient.invalidateQueries({
-// 				queryKey: cartKeys.byUser(variables.userId),
-// 			})
-// 		},
-// 	})
-// }
+export const useRemoveFromCart = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+		mutationFn: ({ userId, itemId }: { userId: number; itemId: number }) =>
+			cartApi.removeItemFromCart(userId, itemId),
+		onSuccess: (_, variables) => {
+			// Инвалидируем кэш корзины для обновления данных
+			queryClient.invalidateQueries({
+				queryKey: cartKeys.byUser(variables.userId),
+			})
+		},
+		onError: error => {
+			console.error('Ошибка при удалении товара из корзины:', error)
+			// Здесь можно добавить уведомление пользователю об ошибке
+		},
+	})
+}
