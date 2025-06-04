@@ -42,15 +42,11 @@ export function NavDrawer() {
 
 
 				{/* КОРЗИНА С ТОВАРАМИ*/}
-				<CartDrawerList userId={2} />
+				<CartDrawerList userId={1} />
 
 				<SheetFooter className='flex-shrink-0 px-4 pb-4'>
 					<SheetClose asChild>
 						<div>
-							<div className='flex justify-between w-full border-b border-dashed'>
-								<p>ИТОГО</p>
-								<p>1000Р</p>
-							</div>
 							<Button className='w-full mt-4'>Оформить заказ</Button>
 						</div>
 					</SheetClose>

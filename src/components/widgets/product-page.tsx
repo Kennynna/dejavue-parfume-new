@@ -16,7 +16,7 @@ export const ProductPageClient = ({ product }: { product: Parfume }) => {
 	return (
 		<>
 			<ItemSwiper /* product={...} */ />
-			<ItemInfo price={product.price} ml={product.ml} name={product.name} />
+			<ItemInfo price={product.volumes[0].price} ml={product.volumes[0].volume} name={product.name} />
 			<div className='flex flex-col gap-6 mt-10'>
 				<div className='space-y-4'>
 					<CartButtonVariants

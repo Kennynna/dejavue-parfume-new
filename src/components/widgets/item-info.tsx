@@ -2,7 +2,7 @@ import '@/styles/item/item-info.css'
 import { ItemInfoTab } from '../shared'
 
 interface ItemInfoProps {
-	ml: string
+	ml: number
 	price: number
 	name: string
 }

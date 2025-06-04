@@ -1,7 +1,6 @@
 import { cartApi } from '@/lib/api-features/cart'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
-
 // Ключи для кэширования
 export const cartKeys = {
 	all: ['cart'] as const,
@@ -13,9 +12,8 @@ export const useCart = (userId: number) => {
 	return useQuery({
 		queryKey: cartKeys.byUser(userId),
 		queryFn: () => cartApi.getCart(userId),
-		enabled: !!userId, // Запрос выполняется только если userId существует
-		staleTime: 0
-
+		enabled: !!userId,
+		staleTime: 0,
 	})
 }
 
@@ -27,14 +25,15 @@ export const useAddItemToCart = () => {
 		mutationFn: ({
 			userId,
 			parfumeId,
+			volumeId,
 			quantity,
 		}: {
 			userId: number
 			parfumeId: number
+			volumeId: number
 			quantity?: number
-		}) => cartApi.addItemToCart(userId, parfumeId, quantity),
+		}) => cartApi.addToCart({ userId, parfumeId, volumeId, quantity }),
 		onSuccess: (_, variables) => {
-			// Инвалидируем кэш корзины для обновления данных
 			queryClient.invalidateQueries({
 				queryKey: cartKeys.byUser(variables.userId),
 			})
@@ -42,20 +41,20 @@ export const useAddItemToCart = () => {
 	})
 }
 
-// Хук для обновления количества товара
-export const useUpdateCartItem = () => {
+// Хук для увеличения количества
+export const useIncrementQuantity = () => {
 	const queryClient = useQueryClient()
 
 	return useMutation({
 		mutationFn: ({
 			userId,
 			parfumeId,
-			quantity,
+			volumeId,
 		}: {
 			userId: number
 			parfumeId: number
-			quantity: number
-		}) => cartApi.updateCartItem(userId, parfumeId, quantity),
+			volumeId: number
+		}) => cartApi.incrementQuantity(userId, parfumeId, volumeId),
 		onSuccess: (_, variables) => {
 			queryClient.invalidateQueries({
 				queryKey: cartKeys.byUser(variables.userId),
@@ -64,22 +63,60 @@ export const useUpdateCartItem = () => {
 	})
 }
 
+// Хук для уменьшения количества
+export const useDecrementQuantity = () => {
+	const queryClient = useQueryClient()
 
-export const useRemoveFromCart = () => {
-  const queryClient = useQueryClient()
-
-  return useMutation({
-		mutationFn: ({ userId, itemId }: { userId: number; itemId: number }) =>
-			cartApi.removeItemFromCart(userId, itemId),
+	return useMutation({
+		mutationFn: ({
+			userId,
+			parfumeId,
+			volumeId,
+		}: {
+			userId: number
+			parfumeId: number
+			volumeId: number
+		}) => cartApi.decrementQuantity(userId, parfumeId, volumeId),
 		onSuccess: (_, variables) => {
-			// Инвалидируем кэш корзины для обновления данных
 			queryClient.invalidateQueries({
 				queryKey: cartKeys.byUser(variables.userId),
 			})
 		},
-		onError: error => {
-			console.error('Ошибка при удалении товара из корзины:', error)
-			// Здесь можно добавить уведомление пользователю об ошибке
+	})
+}
+
+// Хук для удаления товара из корзины
+export const useRemoveFromCart = () => {
+	const queryClient = useQueryClient()
+
+	return useMutation({
+		mutationFn: ({
+			userId,
+			parfumeId,
+			volumeId,
+		}: {
+			userId: number
+			parfumeId: number
+			volumeId: number
+		}) => cartApi.removeFromCart(userId, parfumeId, volumeId),
+		onSuccess: (_, variables) => {
+			queryClient.invalidateQueries({
+				queryKey: cartKeys.byUser(variables.userId),
+			})
+		},
+	})
+}
+
+// Хук для очистки корзины
+export const useClearCart = () => {
+	const queryClient = useQueryClient()
+
+	return useMutation({
+		mutationFn: (userId: number) => cartApi.clearCart(userId),
+		onSuccess: (_, userId) => {
+			queryClient.invalidateQueries({
+				queryKey: cartKeys.byUser(userId),
+			})
 		},
 	})
 }

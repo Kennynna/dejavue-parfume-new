@@ -1,8 +1,8 @@
-import { Item } from '@/dto/item'
+import { Parfume } from '@/types/cart'
 import Link from 'next/link'
 
 interface CatalogCardProps {
-	item: Item
+	item: Parfume
 }
 export const CatalogCard = ({ item }: CatalogCardProps) => {
 	return (
@@ -17,7 +17,7 @@ export const CatalogCard = ({ item }: CatalogCardProps) => {
 					className=' rounded-[7px] object-contain max-h-[120px] w-full'
 				/>
 				<div className='mt-2 space-y-1'>
-					<p className='text-[12px] font-bold'>{item.price} R</p>
+					<p className='text-[12px] font-bold'>{item.volumes[0].price}</p>
 					<h3 className='text-[12px]  font-semibold'>{item.name}</h3>
 					{/* <p className='text-[12px] text-gray-600'>Артикул: {article}</p> */}
 				</div>
