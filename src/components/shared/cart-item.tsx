@@ -45,8 +45,7 @@ export const CartItem = ({ item, userId }: CartItemProps) => {
 	const handleRemove = () => {
 		removeItem({
 			userId,
-			parfumeId: item.parfumeId,
-			volumeId: item.volumeId,
+			itemId: item.id,
 		})
 	}
 

@@ -42,7 +42,7 @@ export function NavDrawer() {
 
 
 				{/* КОРЗИНА С ТОВАРАМИ*/}
-				<CartDrawerList userId={1} />
+				<CartDrawerList userId={3} />
 
 				<SheetFooter className='flex-shrink-0 px-4 pb-4'>
 					<SheetClose asChild>

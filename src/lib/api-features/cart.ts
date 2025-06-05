@@ -85,11 +85,10 @@ export const cartApi = {
 
 	removeFromCart: async (
 		userId: number,
-		parfumeId: number,
-		volumeId: number
+		itemId: number
 	) => {
 		const response = await fetch(
-			`${API_BASE_URL}/telegram/cart/${userId}/${parfumeId}/${volumeId}`,
+			`${API_BASE_URL}/telegram/cart/${userId}/item/${itemId}`,
 			{
 				method: 'DELETE',
 				headers: {

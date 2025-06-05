@@ -92,18 +92,28 @@ export const useRemoveFromCart = () => {
 	return useMutation({
 		mutationFn: ({
 			userId,
-			parfumeId,
-			volumeId,
+			itemId,
 		}: {
 			userId: number
-			parfumeId: number
-			volumeId: number
-		}) => cartApi.removeFromCart(userId, parfumeId, volumeId),
-		onSuccess: (_, variables) => {
-			queryClient.invalidateQueries({
-				queryKey: cartKeys.byUser(variables.userId),
-			})
+			itemId: number
+		}) => cartApi.removeFromCart(userId, itemId),
+		onMutate: async ({ userId, itemId }) => {
+			// Cancel any outgoing refetches
+			await queryClient.cancelQueries({ queryKey: cartKeys.byUser(userId) })
+
+			// Snapshot the previous value
+			const previousCart = queryClient.getQueryData(cartKeys.byUser(userId))
+
+			// Optimistically update the cart by removing the item
+			queryClient.setQueryData(cartKeys.byUser(userId), (old: any) => ({
+				...old,
+				items: old.items.filter((item: any) => item.id !== itemId)
+			}))
+
+			// Return a context object with the snapshotted value
+			return { previousCart }
 		},
+
 	})
 }
 
