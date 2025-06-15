@@ -1,22 +1,30 @@
 import '@/styles/item/item-info.css'
 import { ItemInfoTab } from '../shared'
+import { Parfume } from '@/types/cart'
 
 interface ItemInfoProps {
-	ml: number
-	price: number
-	name: string
+	product: Parfume
+	currentVolume: number
+	changeVolume: (index: number) => void
 }
 
-export const ItemInfo = ({ ml, price, name }: ItemInfoProps) => {
+export const ItemInfo = ({
+	product,
+	currentVolume,
+	changeVolume,
+}: ItemInfoProps) => {
 	return (
 		<div className='mt-4'>
-			<p className='text-center title'>{name}</p>
+			<p className='text-center title'>{product.name}</p>
 			<div className='item-price'>
 				<p>
-					Объем <span>{ml}</span> <span>100 ml</span>
+					Объем:
+					{product.volumes.map((volume, index) => (
+						<span onClick={() => changeVolume(index)}>{volume.volume} ml</span>
+					))}
 				</p>
 				<p>
-					Цена <span>{price} Р</span>
+					Цена <span>{product.volumes[currentVolume].price} Р</span>
 				</p>
 			</div>
 			<ItemInfoTab />

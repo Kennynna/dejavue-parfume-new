@@ -24,12 +24,16 @@ export const cartApi = {
 		volumeId: number
 		quantity?: number
 	}) => {
-		const response = await fetch(`${API_BASE_URL}/telegram/cart/add`, {
+		const response = await fetch(`${API_BASE_URL}/telegram/cart/${data.userId}/add`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(data),
+			body: JSON.stringify({
+				parfumeId: data.parfumeId,
+				volumeId: data.volumeId,
+				quantity: data.quantity,
+			}),
 		})
 
 		if (!response.ok) {
