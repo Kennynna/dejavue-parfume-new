@@ -19,7 +19,7 @@ export const CatalogCards = ({ categoryValue }: CatalogCardsProps) => {
 		<div className='w-full flex flex-wrap gap-1 gap-y-4 items-center justify-between  h-full'>
 			{products?.map((item: Parfume) => (
 				<CatalogCard key={item.id} item={item} />
-			))}
+			)) || <p>Товара нет</p>}
 		</div>
 	)
 }

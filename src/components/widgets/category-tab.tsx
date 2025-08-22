@@ -13,7 +13,7 @@ export const CategoryTab = ({ className }: { className?: string }) => {
 				<TabsTrigger className='tab-catalog' value='every'>
 					Все
 				</TabsTrigger>
-				<TabsTrigger className='tab-catalog' value='woman'>
+				<TabsTrigger className='tab-catalog ' value='woman'>
 					Женские
 				</TabsTrigger>
 				<TabsTrigger className='tab-catalog' value='man'>

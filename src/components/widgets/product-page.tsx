@@ -20,6 +20,7 @@ export const ProductPageClient = ({ product }: { product: Parfume }) => {
 		})
 	}
 	const [currentVolume, serCurrentVolume] = useState(0)
+	
 	function changeVolume(index: number) {
 		serCurrentVolume(index)
 	}
