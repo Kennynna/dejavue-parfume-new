@@ -51,7 +51,7 @@ export async function generateMetadata(props: ProductPageProps) {
 			description: `${product.name} от ${product.brand}. Цена: ${product.volumes[0].price} руб.`,
 			openGraph: {
 				title: product.name,
-				description: `${product.brand} - ${product.price} руб.`,
+				description: `${product.brand} - ${product.volumes[0].price} руб.`,
 				images: [product.imgUrl],
 			},
 		}
